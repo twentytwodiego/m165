@@ -1,0 +1,9 @@
+{
+  "_id": {
+    "$oid": "64c4d32359d7a16fb2fd0db2"
+  },
+  "name": "Diego Vignuda",
+  "adresse": "Cribstrasse 1, Dübendorf",
+  "groesse": 174,
+  "geburtsdatum": "2008-05-15"
+}
