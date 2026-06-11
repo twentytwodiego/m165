@@ -21,7 +21,7 @@ db.playlist.replaceOne(
   {
     name: "Chill Drill Updated",
     erstellt_am: new Date("2025-01-01"),
-    beschreibung: "Neue Version der Playlist",
+    beschreibung: "Neue Version der Playlist",  
     song_ids: [],
     anzahl_songs: 0
   }
