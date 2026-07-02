@@ -1,0 +1,62 @@
+USE musik;
+
+-- kuenstler_alben (kuenstler_name = Partition Key)
+INSERT INTO kuenstler_alben (kuenstler_name, album_jahr, album_titel, label)
+VALUES ('Chapo Mulato', 2021, 'Falsche Propheten', 'Independent');
+
+INSERT INTO kuenstler_alben (kuenstler_name, album_jahr, album_titel, label)
+VALUES ('Chapo Mulato', 2022, 'La Vida', 'Independent');
+
+INSERT INTO kuenstler_alben (kuenstler_name, album_jahr, album_titel, label)
+VALUES ('King NB', 2022, 'La Vida', 'Independent');
+
+INSERT INTO kuenstler_alben (kuenstler_name, album_jahr, album_titel, label)
+VALUES ('King NB', 2023, 'Strassenkind', 'Independent');
+
+INSERT INTO kuenstler_alben (kuenstler_name, album_jahr, album_titel, label)
+VALUES ('Nimo', 2020, 'Mafia Mafia 2', 'Capital Bra Records');
+
+-- album_songs (album_titel = Partition Key)
+INSERT INTO album_songs (album_titel, track_nummer, song_titel, dauer_sekunden)
+VALUES ('Falsche Propheten', 1, 'Intro', 180);
+
+INSERT INTO album_songs (album_titel, track_nummer, song_titel, dauer_sekunden)
+VALUES ('Falsche Propheten', 2, 'Falsche Propheten', 210);
+
+INSERT INTO album_songs (album_titel, track_nummer, song_titel, dauer_sekunden)
+VALUES ('La Vida', 1, 'La Vida', 195);
+
+INSERT INTO album_songs (album_titel, track_nummer, song_titel, dauer_sekunden)
+VALUES ('La Vida', 2, 'Ohne Dich', 220);
+
+INSERT INTO album_songs (album_titel, track_nummer, song_titel, dauer_sekunden)
+VALUES ('Strassenkind', 1, 'Strassenkind', 200);
+
+-- song_details (song_titel = Partition Key)
+INSERT INTO song_details (song_titel, kuenstler_name, genre, veroeffentlicht)
+VALUES ('Intro', 'Chapo Mulato', 'Rap', '2021-03-01');
+
+INSERT INTO song_details (song_titel, kuenstler_name, genre, veroeffentlicht)
+VALUES ('Falsche Propheten', 'Chapo Mulato', 'Drill', '2021-03-01');
+
+INSERT INTO song_details (song_titel, kuenstler_name, genre, veroeffentlicht)
+VALUES ('La Vida', 'King NB', 'Afro', '2022-06-15');
+
+INSERT INTO song_details (song_titel, kuenstler_name, genre, veroeffentlicht)
+VALUES ('Ohne Dich', 'Chapo Mulato', 'Rap', '2022-06-15');
+
+INSERT INTO song_details (song_titel, kuenstler_name, genre, veroeffentlicht)
+VALUES ('Ohne Dich', 'Nimo', 'Rap', '2022-06-15');
+
+-- playlist_songs (playlist_name = Partition Key)
+INSERT INTO playlist_songs (playlist_name, hinzugefuegt_am, song_titel, kuenstler_name)
+VALUES ('Deutschrap Hits', '2023-01-10', 'Intro', 'Chapo Mulato');
+
+INSERT INTO playlist_songs (playlist_name, hinzugefuegt_am, song_titel, kuenstler_name)
+VALUES ('Deutschrap Hits', '2023-02-15', 'La Vida', 'King NB');
+
+INSERT INTO playlist_songs (playlist_name, hinzugefuegt_am, song_titel, kuenstler_name)
+VALUES ('Deutschrap Hits', '2023-03-20', 'Ohne Dich', 'Chapo Mulato');
+
+INSERT INTO playlist_songs (playlist_name, hinzugefuegt_am, song_titel, kuenstler_name)
+VALUES ('Chill Vibes', '2023-04-05', 'Strassenkind', 'King NB');

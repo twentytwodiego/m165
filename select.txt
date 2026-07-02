@@ -1,0 +1,28 @@
+USE musik;
+
+-- Szenario 1: Alle Alben eines Künstlers anzeigen (Screen: Künstler-Seite)
+-- Partition Key Filter: kuenstler_name
+SELECT kuenstler_name, album_jahr, album_titel, label
+FROM kuenstler_alben
+WHERE kuenstler_name = 'Chapo Mulato';
+
+
+-- Szenario 2: Alle Songs eines Albums anzeigen (Screen: Album-Seite)
+-- Partition Key Filter: album_titel
+SELECT album_titel, track_nummer, song_titel, dauer_sekunden
+FROM album_songs
+WHERE album_titel = 'La Vida';
+
+
+-- Szenario 3: Details zu einem Song anzeigen (Screen: Song-Seite)
+-- Partition Key Filter: song_titel
+SELECT song_titel, kuenstler_name, genre, veroeffentlicht
+FROM song_details
+WHERE song_titel = 'Ohne Dich';
+
+
+-- Szenario 4: Alle Songs einer Playlist anzeigen (Screen: Playlist-Seite)
+-- Partition Key Filter: playlist_name
+SELECT playlist_name, hinzugefuegt_am, song_titel, kuenstler_name
+FROM playlist_songs
+WHERE playlist_name = 'Deutschrap Hits';

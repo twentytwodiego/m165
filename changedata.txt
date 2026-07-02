@@ -1,0 +1,21 @@
+USE musik;
+
+-- Szenario 1
+UPDATE kuenstler_alben
+SET label = 'Universal'
+WHERE kuenstler_name = 'Chapo Mulato' AND album_jahr = 2021 AND album_titel = 'Falsche Propheten'
+IF EXISTS;
+
+
+-- Szenario 2
+UPDATE album_songs
+SET dauer_sekunden = 185
+WHERE album_titel = 'Falsche Propheten' AND track_nummer = 1
+IF dauer_sekunden = 180;
+
+
+-- Szenario 3
+UPDATE playlist_songs
+USING TTL 86400
+SET kuenstler_name = 'Chapo Mulato'
+WHERE playlist_name = 'Deutschrap Hits' AND hinzugefuegt_am = '2023-01-10';

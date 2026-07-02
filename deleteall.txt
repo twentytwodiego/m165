@@ -1,0 +1,10 @@
+USE musik;
+
+
+TRUNCATE kuenstler_alben;
+
+TRUNCATE album_songs;
+
+TRUNCATE song_details;
+
+TRUNCATE playlist_songs;

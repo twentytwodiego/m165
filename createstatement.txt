@@ -1,0 +1,58 @@
+CREATE
+  -- Künstler
+  (chapo:Kuenstler {name: "Chapo Mulato", herkunft: "Schweiz", gegründet: 2018}),
+  (kingnb:Kuenstler {name: "King NB", herkunft: "Schweiz", gegründet: 2018}),
+  (lyrical:Kuenstler {name: "Lyrical", herkunft: "Schweiz", gegründet: 2019}),
+  (nimo:Kuenstler {name: "Nimo", herkunft: "Deutschland", gegründet: 2015}),
+  (eno:Kuenstler {name: "Eno", herkunft: "Deutschland", gegründet: 2014}),
+
+  -- Alben
+  (album1:Album {titel: "Falsche Propheten", jahr: 2021, label: "Independent"}),
+  (album2:Album {titel: "La Vida", jahr: 2022, label: "Independent"}),
+  (album3:Album {titel: "Strassenkind", jahr: 2023, label: "Independent"}),
+
+  -- Songs
+  (s1:Song {titel: "Intro", dauer: 180, featuring: false}),
+  (s2:Song {titel: "Falsche Propheten", dauer: 210, featuring: false}),
+  (s3:Song {titel: "La Vida", dauer: 195, featuring: false}),
+  (s4:Song {titel: "Ohne Dich", dauer: 220, featuring: true}),
+  (s5:Song {titel: "Strassenkind", dauer: 200, featuring: false}),
+  (s6:Song {titel: "Outro", dauer: 175, featuring: false}),
+
+  -- Genres
+  (g1:Genre {name: "Rap"}),
+  (g2:Genre {name: "Drill"}),
+  (g3:Genre {name: "Afro"}),
+
+  -- Beziehungen Künstler -> Album
+  (chapo)-[:HAT_ALBUM]->(album1),
+  (chapo)-[:HAT_ALBUM]->(album2),
+  (kingnb)-[:HAT_ALBUM]->(album2),
+  (kingnb)-[:HAT_ALBUM]->(album3),
+
+  -- Beziehungen Album -> Song
+  (album1)-[:ENTHAELT]->(s1),
+  (album1)-[:ENTHAELT]->(s2),
+  (album2)-[:ENTHAELT]->(s3),
+  (album2)-[:ENTHAELT]->(s4),
+  (album3)-[:ENTHAELT]->(s5),
+  (album3)-[:ENTHAELT]->(s6),
+
+  -- Beziehungen Song -> Genre
+  (s1)-[:HAT_GENRE]->(g1),
+  (s2)-[:HAT_GENRE]->(g1),
+  (s2)-[:HAT_GENRE]->(g2),
+  (s3)-[:HAT_GENRE]->(g3),
+  (s4)-[:HAT_GENRE]->(g1),
+  (s5)-[:HAT_GENRE]->(g2),
+  (s6)-[:HAT_GENRE]->(g1),
+
+  -- Beziehungen Künstler featuring
+  (chapo)-[:FEATURED_IN {song: "Ohne Dich"}]->(s4),
+  (nimo)-[:FEATURED_IN {song: "Ohne Dich"}]->(s4),
+
+  -- Beziehungen Künstler kennt Künstler
+  (chapo)-[:KOLLABORIERT_MIT]->(kingnb),
+  (chapo)-[:KOLLABORIERT_MIT]->(nimo),
+  (kingnb)-[:KOLLABORIERT_MIT]->(lyrical),
+  (nimo)-[:KOLLABORIERT_MIT]->(eno)

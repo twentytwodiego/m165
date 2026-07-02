@@ -1,0 +1,18 @@
+USE musik;
+
+-- 1. Eine Zeile löschen mit Partition Key + Cluster Key
+-- Löscht das Album "La Vida" (2022) von Chapo Mulato
+DELETE FROM kuenstler_alben
+WHERE kuenstler_name = 'Chapo Mulato' AND album_jahr = 2022 AND album_titel = 'La Vida';
+
+
+-- 2. Eine einzelne Spalte einer Zeile löschen
+-- Löscht nur das Attribut "label" beim Album "Strassenkind" von King NB
+DELETE label FROM kuenstler_alben
+WHERE kuenstler_name = 'King NB' AND album_jahr = 2023 AND album_titel = 'Strassenkind';
+
+
+-- 3. Eine Zeile aus song_details löschen über PK + CK
+-- Löscht den Eintrag "Ohne Dich" von Nimo (der zweite Eintrag mit demselben PK)
+DELETE FROM song_details
+WHERE song_titel = 'Ohne Dich' AND kuenstler_name = 'Nimo';
